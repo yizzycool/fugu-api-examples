@@ -6,6 +6,12 @@ import AccountBalanceIcon from '@mui/icons-material/AccountBalance';
 import DriveFileMoveIcon from '@mui/icons-material/DriveFileMove';
 import MenuIcon from '@mui/icons-material/Menu';
 
+const functions = {
+  '/': 'Home',
+  '/file-system-access-api': 'File System Access API',
+  '/app-badging-api': 'App Badging API',
+}
+
 export default function RootLayout(props) {
   const { children } = props;
   const [open, setOpen] = useState(false);
@@ -38,18 +44,14 @@ export default function RootLayout(props) {
       </Box>
       <Drawer open={open} onClose={() => setOpen(false)}>
         <div>
-          <ListItemButton>
-            <ListItemIcon>
-              <AccountBalanceIcon />
-            </ListItemIcon>
-            <ListItemText primary={<Link href="/">Home</Link>} />
-          </ListItemButton>
-          <ListItemButton>
-            <ListItemIcon>
-              <DriveFileMoveIcon />
-            </ListItemIcon>
-            <ListItemText primary={<Link href="/file-system-access-api">File System Access API</Link>} />
-          </ListItemButton>
+          {Object.entries(functions).map(([key, value]) => (
+            <ListItemButton key={key}>
+              <ListItemIcon>
+                <AccountBalanceIcon />
+              </ListItemIcon>
+              <ListItemText primary={<Link href={key}>{value}</Link>} />
+            </ListItemButton>
+          ))}
         </div>
       </Drawer>
       {children}

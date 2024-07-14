@@ -122,4 +122,9 @@ html, body, #__next {
   padding: 10px;
   border-radius: 120px;
   margin: 0 0 0 10px;
+  min-width: 100px;
+}
+
+.button:hover {
+  border: 1px solid rgb(171, 171, 171);
 }
