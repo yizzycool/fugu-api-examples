@@ -43,7 +43,7 @@ export default function OldMethod() {
 
   return (
     <div className={styles.flex}>
-      <h3>Old Method to Upload/Download Image</h3>
+      <h3>Upload/Download Image</h3>
       <br />
       <button className={styles.button} onClick={() => inputRef.current.click()}>Upload an image</button>
       <input ref={inputRef} className={styles.hiddenInput} type="file" accept="image/*" onChange={handleFileChange} />
@@ -60,7 +60,7 @@ export default function OldMethod() {
       <br />
       <hr />
       <br />
-      <h3>Old Method to Download Modified Texts</h3>
+      <h3>Save Modified Texts</h3>
       <br />
       <textarea className={styles.textArea} value={texts} onChange={(e) => setTexts(e.target.value)}  />
       <button className="button" onClick={handleDownloadTexts}>Save Texts</button>
