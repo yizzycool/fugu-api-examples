@@ -10,6 +10,7 @@ const functions = {
   '/': 'Home',
   '/file-system-access-api': 'File System Access API',
   '/app-badging-api': 'App Badging API',
+  '/shape-detection': 'Shape Detection'
 }
 
 export default function RootLayout(props) {
