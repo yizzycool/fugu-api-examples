@@ -1,7 +1,7 @@
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import styles from './index.module.scss';
-import OldMethod from './OldMethod';
-import NewMethod from './NewMethod';
+import OldMethod from './old-method';
+import NewMethod from './new-method';
 import { useState } from 'react';
 
 export default function FileSystemAccessAPI() {

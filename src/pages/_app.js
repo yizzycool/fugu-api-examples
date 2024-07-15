@@ -1,6 +1,6 @@
 import "@/styles/globals.css";
 import { createTheme, CssBaseline, ThemeProvider } from "@mui/material";
-import RootLayout from "@/components/Layouts/RootLayout";
+import RootLayout from "@/components/layouts/root-layout";
 
 export default function App({ Component, pageProps }) {
 

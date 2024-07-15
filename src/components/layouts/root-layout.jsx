@@ -1,4 +1,4 @@
-import styles from './RootLayout.module.scss';
+import styles from './root-layout.module.scss';
 import { AppBar, Box, Button, Drawer, Icon, IconButton, ListItemButton, ListItemIcon, ListItemText, Toolbar, Typography } from "@mui/material";
 import Link from "next/link";
 import { useState } from "react";

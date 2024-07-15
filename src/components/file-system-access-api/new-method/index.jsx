@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import styles from './index.module.scss';
-import imageUtils from '../utils/imageUtils';
+import imageUtils from '../utils/image-utils';
 
 export default function OldMethod() {
   const [fileHandle, setFileHandle] = useState(null);
