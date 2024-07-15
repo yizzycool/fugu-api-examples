@@ -9,7 +9,7 @@ import FaceResult from './result/face';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
 import TextResult from './result/text';
 
-export default function ShapeDetection() {
+export default function ShapeDetectionAPIs() {
   const [alignment, setAlignment] = useState('face');
   const videoWrapperRef = useRef(null);
   const { videoRef, stream, startWebcam, stopWebcam } = useWebcam();

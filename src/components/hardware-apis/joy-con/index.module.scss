@@ -1,0 +1,41 @@
+.abxy {
+  position: relative;
+}
+
+.abxy {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 40px 0 0;
+}
+
+.ya {
+  display: flex;
+  align-items: center;
+}
+
+.x,
+.y,
+.a,
+.b {
+  background-color: rgb(19, 79, 76);
+  border-radius: 100%;
+  border: 1px solid rgb(199, 199, 199);
+  width: 40px;
+  height: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.y {
+  margin: 0 20px 0 0;
+}
+
+.a {
+  margin: 0 0 0 20px;
+}
+
+.buttonActive {
+  background-color: rgb(232, 136, 18);
+}
