@@ -29,6 +29,7 @@ export default function useWebcam () {
       track.stop();
     });
     videoRef.current.pause();
+    videoRef.current.srcObject = null;
     // clear states
     setStream(null);
   }

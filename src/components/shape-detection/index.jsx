@@ -1,29 +1,39 @@
 import styles from './index.module.scss';
-import { useState } from 'react';
+import { useMemo, useRef, useState } from 'react';
 import useWebcam from './hooks/use-webcam';
 import useBarcodeDetector from './hooks/use-barcode-detector';
 import useFaceDetector from './hooks/use-face-detector';
+import useTextDetector from './hooks/use-text-detector';
 import BarcodeResult from './result/barcode';
 import FaceResult from './result/face';
 import { ToggleButton, ToggleButtonGroup } from '@mui/material';
+import TextResult from './result/text';
 
 export default function ShapeDetection() {
   const [alignment, setAlignment] = useState('face');
+  const videoWrapperRef = useRef(null);
   const { videoRef, stream, startWebcam, stopWebcam } = useWebcam();
   const {
     isBarcodeDetectorEnabled,
     barcodes,
     startBarcodeDetection,
-    stoptBarcodeDetection,
+    stopBarcodeDetection,
     initBarcodeTimer,
   } = useBarcodeDetector({ videoRef });
   const {
     isFaceDetectorEnabled,
     faces,
     startFaceDetection,
-    stoptFaceDetection,
+    stopFaceDetection,
     initFaceTimer,
   } = useFaceDetector({ videoRef });
+  const {
+    isTextDetectorEnabled,
+    texts,
+    startTextDetection,
+    stopTextDetection,
+    initTextTimer,
+  } = useTextDetector({ videoRef });
 
   const handleChange = (_, newAlignment) => {
     setAlignment(newAlignment);
@@ -34,11 +44,11 @@ export default function ShapeDetection() {
   const handleStopWebcam = () => {
     stopWebcam();
     if (alignment === 'barcode') {
-      stoptBarcodeDetection();
+      stopBarcodeDetection();
     } else if (alignment === 'face') {
-      stoptFaceDetection();
+      stopFaceDetection();
     } else if (alignment === 'text') {
-      // TODO: stop text detection
+      stopTextDetection();
     }
   }
 
@@ -46,12 +56,13 @@ export default function ShapeDetection() {
     videoRef.current.play();
     if (alignment === 'barcode') {
       initBarcodeTimer();
-      detectBarcode();
+      startBarcodeDetection();
     } else if (alignment === 'face') {
       initFaceTimer();
       startFaceDetection();
     } else if (alignment === 'text') {
-      // TODO: stop text detection
+      initTextTimer();
+      startTextDetection();
     }
   }
 
@@ -68,14 +79,14 @@ export default function ShapeDetection() {
         <ToggleButton value="face">Face Detector</ToggleButton>
         <ToggleButton value="text">Text Detector</ToggleButton>
       </ToggleButtonGroup>
-      <div className={styles.videoWrapper}>
+      <div ref={videoWrapperRef} className={styles.videoWrapper}>
         <video ref={videoRef} className={styles.video} muted={true} onLoadedMetadata={handleLoadedMetadata} />
         {alignment === 'barcode' ? (
           <BarcodeResult barcodes={barcodes} />
         ) : alignment === 'face' ? (
-          <FaceResult faces={faces} />
+          <FaceResult faces={faces} videoRef={videoRef} videoWrapperRef={videoWrapperRef} />
         ) : alignment === 'text' ? (
-          <div />
+          <TextResult texts={texts} videoRef={videoRef} videoWrapperRef={videoWrapperRef} />
         ) : null}
       </div>
       <button className="button" onClick={handleStartWebcam}>Start Webcam</button>

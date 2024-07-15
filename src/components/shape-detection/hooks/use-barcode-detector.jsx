@@ -12,7 +12,7 @@ export default function useBarcodeDetector(props) {
   }, []);
 
   const initBarcodeDetector = () => {
-    if (!('BarcodeDetector' in window)) return;
+    if (!window.BarcodeDetector) return;
     setIsBarcodeDetectorEnabled(true);
     const barcodeDetector = new window.BarcodeDetector({
       // (Optional) A series of barcode formats to search for.
@@ -39,13 +39,9 @@ export default function useBarcodeDetector(props) {
   const startBarcodeDetection = async () => {
     if (!barcodeDetector) return;
     const barcodes = await barcodeDetector.detect(videoRef.current);
-    console.log('Count of detected barcodes:', barcodes.length)
+    // console.log('Count of detected barcodes:', barcodes.length);
     if (barcodes.length) {
       setBarcodes(barcodes);
-      // barcodes.forEach((barcode) => {
-      //   const rawValue = barcode.rawValue;
-      //   console.log(rawValue);
-      // });
     } else {
       setBarcodes([]);
     }
@@ -54,7 +50,7 @@ export default function useBarcodeDetector(props) {
     }
   }
 
-  const stoptBarcodeDetection = async () => {
+  const stopBarcodeDetection = async () => {
     if (!barcodeDetector) return;
     // clear states
     setTimeout(() => setBarcodes([]), 100);
@@ -72,7 +68,7 @@ export default function useBarcodeDetector(props) {
     isBarcodeDetectorEnabled,
     barcodes,
     startBarcodeDetection,
-    stoptBarcodeDetection,
+    stopBarcodeDetection,
     initBarcodeTimer,
   }
 }

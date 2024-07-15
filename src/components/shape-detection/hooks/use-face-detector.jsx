@@ -12,7 +12,7 @@ export default function useFaceDetector(props) {
   }, []);
 
   const initFaceDetector = () => {
-    if (!('FaceDetector' in window)) return;
+    if (!window.FaceDetector) return;
     setIsFaceDetectorEnabled(true);
     const faceDetector = new window.FaceDetector({
       // (Optional) Hint to try and limit the amount of detected faces
@@ -28,7 +28,7 @@ export default function useFaceDetector(props) {
   const startFaceDetection = async () => {
     if (!faceDetector) return;
     const faces = await faceDetector.detect(videoRef.current);
-    console.log('Count of detected faces:', faces.length)
+    // console.log('Count of detected faces:', faces.length)
     if (faces.length) {
       setFaces(faces);
     } else {
@@ -39,7 +39,7 @@ export default function useFaceDetector(props) {
     }
   }
 
-  const stoptFaceDetection = async () => {
+  const stopFaceDetection = async () => {
     if (!faceDetector) return;
     // clear states
     setTimeout(() => setFaces([]), 100);
@@ -57,7 +57,7 @@ export default function useFaceDetector(props) {
     isFaceDetectorEnabled,
     faces,
     startFaceDetection,
-    stoptFaceDetection,
+    stopFaceDetection,
     initFaceTimer,
   }
 }
