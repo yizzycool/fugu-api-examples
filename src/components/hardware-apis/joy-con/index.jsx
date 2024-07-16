@@ -8,7 +8,7 @@ export default function JoyCon() {
 
   const onPair = async () => {
     if (!window?.navigator?.hid) return;
-    const filter = joyConUtils.filters;
+    const filters = joyConUtils.filters;
     const [device] = await navigator.hid.requestDevice({ filters });
     setDevice(device);
     printDebugInfo(device);

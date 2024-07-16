@@ -11,7 +11,8 @@ const functions = {
   '/file-system-access-api': 'File System Access API',
   '/app-badging-api': 'App Badging API',
   '/shape-detection-apis': 'Shape Detection APIs',
-  '/hardware-apis': 'Hardware APIs',
+  '/hardware-apis': 'Web HID APIs',
+  '/window-management-api': 'Window Management API',
 }
 
 export default function RootLayout(props) {
