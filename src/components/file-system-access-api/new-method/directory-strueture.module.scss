@@ -1,0 +1,23 @@
+
+.directory {
+  padding: 20px 0 0 20px;
+}
+
+.subDirectory {
+  padding: 0 0 0 20px;
+}
+
+.icon {
+  width: 16px;
+  height: 16px;
+  margin: 0 10px 0 0;
+}
+
+.link {
+  cursor: pointer;
+  color: rgb(219, 233, 255);
+
+  &:hover {
+    color: rgb(136, 182, 250);
+  }
+}
