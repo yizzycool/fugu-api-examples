@@ -31,8 +31,8 @@ export default function ScreenSizeVisualization(props) {
     return {
       width: width * scale,
       height: height * scale,
-      top,
-      left,
+      top: top * scale,
+      left: left * scale,
     }
   };
 
