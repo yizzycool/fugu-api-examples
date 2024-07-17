@@ -120,7 +120,7 @@ export default function OldMethod() {
     <div className={styles.flex}>
       <h3>Upload/Download Image</h3>
       <br />
-      <button className={styles.button} onClick={handleUploadClick}>Upload an image</button>
+      <button className="button" onClick={handleUploadClick}>Upload an image</button>
       {!!blob && (
         <div>
           <button className="button" onClick={handleFlip}>Flip image</button>

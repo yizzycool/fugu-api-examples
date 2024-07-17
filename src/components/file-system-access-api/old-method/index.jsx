@@ -45,7 +45,7 @@ export default function OldMethod() {
     <div className={styles.flex}>
       <h3>Upload/Download Image</h3>
       <br />
-      <button className={styles.button} onClick={() => inputRef.current.click()}>Upload an image</button>
+      <button className="button" onClick={() => inputRef.current.click()}>Upload an image</button>
       <input ref={inputRef} className={styles.hiddenInput} type="file" accept="image/*" onChange={handleFileChange} />
       {!!blob && (
         <>
