@@ -6,7 +6,7 @@ export default function OldMethod() {
 
   const timeTestedOpen = () => {
     const popup = window.open(
-      'http://localhost:3000/window-management-api',
+      '/window-management-api',
       'My Popup Window',
       'left=500,top=50,width=400,height=300',
     );
